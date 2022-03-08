@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import AlbumCard from '../components/AlbumCard';
 import Header from '../components/Header';
+import searchAlbumsAPI from '../services/searchAlbumsAPI';
+import Loading from './Loading';
 
 export default class Search extends Component {
   constructor() {
@@ -7,7 +10,9 @@ export default class Search extends Component {
 
     this.state = {
       isDisable: true,
+      loading: '',
       search: '',
+      album: '',
     };
   }
 
@@ -17,33 +22,56 @@ export default class Search extends Component {
     this.setState({ [name]: value, isDisable: value.length < maxLength });
   };
 
+  albumSearch = async () => {
+    const { search } = this.state;
+    this.setState({ loading: true });
+
+    const album = await searchAlbumsAPI(search);
+
+    this.setState({ loading: false, album });
+  };
+
   render() {
-    const { search, isDisable } = this.state;
+    const { search, isDisable, loading, album } = this.state;
 
     return (
       <>
         <Header />
         <div data-testid="page-search">
-          <form action="">
-            <label htmlFor="search">
-              <input
-                name="search"
-                id="search"
-                onChange={ this.handleSearch }
-                data-testid="search-artist-input"
-                type="text"
-              />
-            </label>
-            <button
-              value={ search }
-              disabled={ isDisable }
-              data-testid="search-artist-button"
-              type="button"
-            >
-              Pesquisar
+          {loading
+            ? <Loading /> : (
+              <form action="">
+                <label htmlFor="search">
+                  <input
+                    name="search"
+                    id="search"
+                    onChange={ this.handleSearch }
+                    data-testid="search-artist-input"
+                    type="text"
+                  />
+                </label>
+                <button
+                  value={ search }
+                  disabled={ isDisable }
+                  onClick={ this.albumSearch }
+                  data-testid="search-artist-button"
+                  type="button"
+                >
+                  Pesquisar
 
-            </button>
-          </form>
+                </button>
+              </form>)}
+          <p>{album !== '' ? `Resultado de álbuns de: ${search}` : null}</p>
+          {album.length !== 0 ? album.map((el) => (
+            <div key={ el.collectionId }>
+              <AlbumCard
+                albumImage={ el.artworkUrl100 }
+                albumName={ el.collectionName }
+                artistName={ el.artistName }
+                albumId={ el.collectionId }
+              />
+            </div>
+          )) : <p>Nenhum álbum foi encontrado</p>}
         </div>
       </>
     );
