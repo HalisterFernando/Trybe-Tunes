@@ -28,5 +28,5 @@ AlbumCard.propTypes = {
   albumImage: PropTypes.string.isRequired,
   albumName: PropTypes.string.isRequired,
   artistName: PropTypes.string.isRequired,
-  albumId: PropTypes.string.isRequired,
+  albumId: PropTypes.number.isRequired,
 };
