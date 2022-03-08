@@ -44,6 +44,7 @@ class Album extends React.Component {
               key={ el.trackId }
               trackName={ el.trackName }
               previewUrl={ el.previewUrl }
+              trackId={ el.trackId }
             />
           ))}
         </div>
@@ -52,10 +53,15 @@ class Album extends React.Component {
   }
 }
 
+// Solução para validar as proptypes encontrada aqui https://github.com/airbnb/javascript/issues/1519;
+
 Album.propTypes = {
   match: PropTypes.shape({
-    params.id: PropTypes.number.isRequired,
-  }),
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }).isRequired,
+  }).isRequired,
+
 };
 
 export default Album;
