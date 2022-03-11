@@ -8,29 +8,30 @@ export default class Header extends Component {
     super();
     this.state = {
       user: '',
-      loading: '',
+      loading: true,
     };
   }
 
-  async componentDidMount() {
-    this.setState({ loading: true });
-
-    const userInfo = await getUser();
-
-    this.setState({ user: userInfo.name, loading: false });
+  componentDidMount() {
+    this.setState({}, async () => {
+      const userInfo = await getUser();
+      this.setState({ user: userInfo.name, loading: false });
+    });
   }
 
   render() {
     const { user, loading } = this.state;
     return (
-      <header data-testid="header-component">
-        <h1 data-testid="header-user-name">{ loading ? <Loading /> : user }</h1>
-        <nav>
-          <Link data-testid="link-to-search" to="/search">Pesquisar</Link>
-          <Link data-testid="link-to-favorites" to="/favorites">Favoritos</Link>
-          <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
-        </nav>
-      </header>
+      loading ? <Loading /> : (
+        <header data-testid="header-component">
+          <h1 data-testid="header-user-name">{ user }</h1>
+          <nav>
+            <Link data-testid="link-to-search" to="/search">Pesquisar</Link>
+            <Link data-testid="link-to-favorites" to="/favorites">Favoritos</Link>
+            <Link data-testid="link-to-profile" to="/profile">Perfil</Link>
+          </nav>
+        </header>
+      )
     );
   }
 }

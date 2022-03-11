@@ -1,16 +1,14 @@
-import { 
+import {
   screen,
-  waitFor,
+  waitFor
 } from '@testing-library/react';
-
-import * as musicsAPI from '../services/musicsAPI';
 import * as favoriteSongsAPI from '../services/favoriteSongsAPI';
+import * as musicsAPI from '../services/musicsAPI';
 import renderPath from './helpers/renderPath';
-import { 
-  defaultUser,
-  musicAPIDefaultResponse,
-  favoriteSongsList
+import {
+  defaultUser, favoriteSongsList, musicAPIDefaultResponse
 } from './mocks';
+
 
 describe('9 - Faça a requisição para recuperar as músicas favoritas ao entrar na página do Álbum', () => {
   beforeEach(() => {

@@ -10,29 +10,29 @@ export default class Search extends Component {
 
     this.state = {
       isDisable: true,
-      loading: '',
+      loading: false,
       search: '',
       album: '',
+      input: '',
     };
   }
 
   handleSearch = ({ target }) => {
     const { name, value } = target;
     const maxLength = 2;
-    this.setState({ [name]: value, isDisable: value.length < maxLength });
+    this.setState({ [name]: value, isDisable: value.length < maxLength, input: value });
   };
 
-  albumSearch = async () => {
+  albumSearch = () => {
     const { search } = this.state;
-    this.setState({ loading: true });
-
-    const album = await searchAlbumsAPI(search);
-
-    this.setState({ loading: false, album });
+    this.setState({ loading: true, search: '' }, async () => {
+      const album = await searchAlbumsAPI(search);
+      this.setState({ loading: false, album });
+    });
   };
 
   render() {
-    const { search, isDisable, loading, album } = this.state;
+    const { search, isDisable, loading, album, input } = this.state;
 
     return (
       <>
@@ -61,17 +61,26 @@ export default class Search extends Component {
 
                 </button>
               </form>)}
-          <p>{album !== '' ? `Resultado de álbuns de: ${search}` : null}</p>
-          {album.length !== 0 ? album.map((el) => (
-            <div key={ el.collectionId }>
-              <AlbumCard
-                albumImage={ el.artworkUrl100 }
-                albumName={ el.collectionName }
-                artistName={ el.artistName }
-                albumId={ el.collectionId }
-              />
-            </div>
-          )) : <p>Nenhum álbum foi encontrado</p>}
+          <div>
+            {
+              album.length !== 0 ? (
+                <>
+                  <p>{`Resultado de álbuns de: ${input}`}</p>
+                  {album.map((el) => (
+                    <div key={ el.collectionId }>
+                      <AlbumCard
+                        albumImage={ el.artworkUrl100 }
+                        albumName={ el.collectionName }
+                        artistName={ el.artistName }
+                        albumId={ el.collectionId }
+                      />
+                    </div>
+                  ))}
+                </>
+              )
+                : <p>Nenhum álbum foi encontrado</p>
+            }
+          </div>
         </div>
       </>
     );
