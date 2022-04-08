@@ -9,6 +9,7 @@ export default class MusicCard extends Component {
     this.state = {
       loading: false,
       checked: false,
+
     };
   }
 
@@ -24,40 +25,39 @@ export default class MusicCard extends Component {
     });
   }
 
-    handleFave = ({ target }) => {
-      const { checked } = target;
-      const { musicObj } = this.props;
+    // Lógica para favoritar uma música
+    handleFave = (ev, musicObj) => {
+      const { checked } = ev.target;
 
+      // Se checked for verdadeiro adiciona a música a lista de favoritos, do contrário remove
       this.setState({ loading: true }, async () => {
-        if (checked) { await addSong(musicObj); }
-        if (!checked) { await removeSong(musicObj); }
+        if (checked) { await addSong(musicObj); } else { await removeSong(musicObj); }
+
         this.setState({ loading: false, checked });
       });
     };
 
     render() {
-      const { trackName, previewUrl, trackId } = this.props;
+      const { trackName, previewUrl, trackId, musicObj } = this.props;
       const { loading, checked } = this.state;
       return (
         <div>
           {loading && <Loading />}
           <p>{trackName}</p>
-          <label htmlFor="favorite">
+          <label htmlFor={ trackId }>
             Favorita
             <input
-              id="favorite"
+              id={ trackId }
               type="checkbox"
               name="favorite"
-              value={ trackId }
               checked={ checked }
-              onChange={ this.handleFave }
+              onChange={ (ev) => this.handleFave(ev, musicObj) }
               data-testid={ `checkbox-music-${trackId}` }
             />
           </label>
           <audio data-testid="audio-component" src={ previewUrl } controls>
             <track kind="captions" />
             O seu navegador não suporta o elemento
-            {' '}
             <code>audio</code>
             .
           </audio>
@@ -74,4 +74,5 @@ MusicCard.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ])).isRequired,
+
 };

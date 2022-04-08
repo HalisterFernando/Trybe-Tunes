@@ -40,30 +40,37 @@ export default class Login extends Component {
     return (
       <>
         {loading ? <Loading /> : (
-          <div data-testid="page-login">
-            <form action="">
-              <label htmlFor="name">
-                <input
-                  id="name"
-                  onChange={ this.handleChange }
-                  value={ name }
-                  name="name"
-                  type="text"
-                  data-testid="login-name-input"
-                />
-              </label>
-              <button
-                disabled={ isDisable }
-                data-testid="login-submit-button"
-                type="button"
-                onClick={ this.enterClick }
-              >
-                Entrar
+          <div className="login-container">
 
-              </button>
+            <div className="form-container" data-testid="page-login">
+              <h1>Trybe Tunes</h1>
+              <img className="wave" src="./cassete.png" alt="wave" />
+              <form action="">
+                <label htmlFor="name">
+                  <input
+                    id="name"
+                    className="name"
+                    onChange={ this.handleChange }
+                    value={ name }
+                    name="name"
+                    type="text"
+                    data-testid="login-name-input"
+                  />
+                </label>
+                <button
+                  className={ isDisable ? 'enter-disabled' : 'enter-abled' }
+                  disabled={ isDisable }
+                  data-testid="login-submit-button"
+                  type="button"
+                  onClick={ this.enterClick }
+                >
+                  Entrar
 
-            </form>
+                </button>
 
+              </form>
+
+            </div>
           </div>
         )}
         {redirect && <Redirect to="/search" /> }

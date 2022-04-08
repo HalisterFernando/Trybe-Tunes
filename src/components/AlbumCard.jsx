@@ -2,6 +2,7 @@ import { PropTypes } from 'prop-types';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// Renderiza os albums dos artistas buscados
 export default class AlbumCard extends Component {
   render() {
     const { albumImage, albumName, artistName, albumId } = this.props;

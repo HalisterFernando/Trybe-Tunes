@@ -23,7 +23,7 @@ class Album extends React.Component {
       const songs = await getMusics(params.id);
       this.setState({
         loading: false,
-        songs: songs.slice(1),
+        songs: songs.slice(1), // Retorna a requisição sem o primeiro índice
         artistName: songs[0].artistName,
         collectionName: songs[0].collectionName,
       });

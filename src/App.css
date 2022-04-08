@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Patua+One&display=swap') ;
+
+* {
+  box-sizing: border-box;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.login-container {
+  align-items: center;
+  background-attachment: fixed;
+  background-color: rgb(224, 224, 224);
+  background-image: url('./images/pexels-elviss-railijs-bitāns-1389429.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+}
+
+.wave {
+  height: 100px;
+}
+
+.form-container {
+  align-items: center;
+  background-color: #e5d2b4bb;
+  border-radius: 8px;
+  box-shadow: 0 0 50px #f38354;
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.form-container h1 {
+  color: #f38354;
+  font-family: Patua One , cursive;
+  font-size: 3.8rem;
+  font-weight: 100;
+  text-shadow: 2px 2px #532641;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  border-radius: 5px;
+  box-shadow: 1px 1px 1px black;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding: 5px 0 5px 10px;
+
+}
+
+.enter-abled {
+  background-color: #f38354;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #532641;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 5px;
+  text-shadow: 2px 2px #532641;
+}
+
+.enter-disabled {
+  background-color: #e5d2b4bb;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px #532641;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 5px;
+  text-shadow: 2px 2px #532641;
+
+}
+
+/* Header */
+.header-h1 {
+  background-color: #e7d3b3;
+  color: #f38354;
+  font-family: Patua One , cursive;
+  font-size: 3rem;
+  font-weight: 100;
+  padding: 10px;
+  text-align: center;
+  text-shadow: 2px 2px #532641;
+}
+
+.header-nav {
+  background-color: #8e6273;
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+}
+
+.nav-links {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  width: 45%;
+}
+
+.nav-links a {
+  color: #e7d3b3;
+  font-family: Impact , Haettenschweiler , sans-serif;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 700;
+  padding: 5px 10px;
+  text-decoration: none;
+  text-shadow: 2px 2px #532641;
+  transition: 0.2s;
+}
+
+.nav-links a:hover {
+  color: #f38354;
+  text-shadow: 2px 2px 5px #532641;
+}
+
+.nav-icon {
+  margin-right: 5px;
+
+}
+
