@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    .btn-disable {
+      @apply 
+      bg-r-purple 
+      shadow-md shadow-r-purple md:shadow-none 
+      text-white text-lg 
+      font-semibold 
+      w-full 
+      p-2 md:px-3
+      rounded-md
+      transition ease-in-out delay-75
+      hover:text-r-cream hover:shadow hover:shadow-white;
+    }
+    .btn-able {
+        @apply 
+        bg-r-orange 
+        shadow-md shadow-r-purple md:shadow-none 
+        text-white text-lg 
+        font-semibold 
+        w-full 
+        p-2 md:px-3
+        rounded-md
+        transition ease-in-out delay-75
+      hover:text-r-dark hover:shadow hover:shadow-white;
+    }
+
+    .nav-link {
+      @apply 
+      flex items-center gap-1 
+      text-r-dark md:text-2xl
+      font-semibold
+      transition ease-in-out duration-[0.3ms]
+      hover:text-r-orange hover:text-shadow-span hover:drop-shadow-[1px_1px_#522641];
+    }
+  }

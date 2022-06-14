@@ -34,8 +34,7 @@ export default class Favorites extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-favorites">
-
+        <div className="bg-r-dark min-h-screen" data-testid="page-favorites">
           {
             loading
               ? <Loading />
@@ -46,6 +45,7 @@ export default class Favorites extends Component {
                   trackId={ el.trackId }
                   previewUrl={ el.previewUrl }
                   musicObj={ el }
+                  favoriteSongs={ this.getFaves }
                 />
               )))
           }

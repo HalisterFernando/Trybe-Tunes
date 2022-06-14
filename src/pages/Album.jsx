@@ -35,27 +35,49 @@ class Album extends React.Component {
     return (
       <>
         <Header />
-        {!loading && (
-          <>
-            <p data-testid="artist-name">{artistName}</p>
-            <p data-testid="album-name">{collectionName}</p>
-          </>
-        ) }
+        <div className="bg-r-dark">
+          {!loading && (
+            <div className="flex justify-center items-center gap-2 py-4">
+              <div>
+                <img src={ songs[0].artworkUrl100 } alt={ collectionName } />
+              </div>
+              <div>
+                <p
+                  className="
+                text-xl text-center text-r-cream
+                font-semibold"
+                  data-testid="artist-name"
+                >
+                  {artistName}
+                </p>
+                <p
+                  className="
+                text-xl text-center text-r-cream
+                font-semibold"
+                  data-testid="album-name"
+                >
+                  {collectionName}
+                </p>
+              </div>
+            </div>
+          ) }
 
-        {loading && songs.length === 0 ? <Loading /> : (
-          <div data-testid="page-album">
+          {loading && songs.length === 0 ? <Loading /> : (
+            <div className="bg-r-dark" data-testid="page-album">
 
-            {songs.map((el) => (
-              <MusicCard
-                key={ el.trackId }
-                trackName={ el.trackName }
-                trackId={ el.trackId }
-                previewUrl={ el.previewUrl }
-                musicObj={ el }
-              />
-            ))}
-          </div>)}
+              {songs.map((el) => (
+                <MusicCard
+                  key={ el.trackId }
+                  trackName={ el.trackName }
+                  trackId={ el.trackId }
+                  previewUrl={ el.previewUrl }
+                  musicObj={ el }
+                />
+              ))}
+            </div>)}
+        </div>
       </>
+
     );
   }
 }

@@ -7,19 +7,16 @@ export default class AlbumCard extends Component {
   render() {
     const { albumImage, albumName, artistName, albumId } = this.props;
     return (
-      <div>
-        <div>
-          <img src={ albumImage } alt={ albumName } />
-        </div>
-        <div>
-          <h3>{albumName}</h3>
-          <Link
-            data-testid={ `link-to-album-${albumId}` }
-            to={ `/album/${albumId}` }
-          >
-            {artistName}
-          </Link>
-        </div>
+      <div className="p-3 mb-2 w-[160px] h-[200px] rounded-md bg-r-cream">
+        <Link to={ `/album/${albumId}` }>
+          <div className="flex justify-center">
+            <img className="w-[150px]" src={ albumImage } alt="thumbnail" />
+          </div>
+          <div>
+            <p className="text-center text-r-dark font-semibold truncate">{albumName}</p>
+          </div>
+          <p className="text-center text-r-dark font-semibold truncate">{artistName}</p>
+        </Link>
       </div>
     );
   }

@@ -37,48 +37,67 @@ export default class Search extends Component {
     return (
       <>
         <Header />
-        <div data-testid="page-search">
+        <div className="bg-r-dark max-h-full flex flex-col items-center" data-testid="page-search">
           {loading
             ? <Loading /> : (
-              <form action="">
-                <label htmlFor="search">
+              <form className="pt-10 w-80" action="">
+                <label className="flex flex-col px-10 gap-2 md:flex-row md:justify-center" htmlFor="search">
                   <input
                     name="search"
                     id="search"
+                    className="p-2 bg-slate-100 rounded-md border border-r-dark"
                     onChange={ this.handleSearch }
                     data-testid="search-artist-input"
                     type="text"
                   />
-                </label>
-                <button
-                  value={ search }
-                  disabled={ isDisable }
-                  onClick={ this.albumSearch }
-                  data-testid="search-artist-button"
-                  type="button"
-                >
-                  Pesquisar
+                  <button
+                    className={ isDisable ? 'btn-disable' : 'btn-able' }
+                    value={ search }
+                    disabled={ isDisable }
+                    onClick={ this.albumSearch }
+                    data-testid="search-artist-button"
+                    type="button"
+                  >
+                    Pesquisar
 
-                </button>
+                  </button>
+                </label>
               </form>)}
-          <div>
+          <div className="mt-10 min-h-screen bg-r-dark">
             {
               album.length !== 0 ? (
                 <>
-                  <p>{`Resultado de álbuns de: ${input}`}</p>
-                  {album.map((el) => (
-                    <div key={ el.collectionId }>
-                      <AlbumCard
-                        albumImage={ el.artworkUrl100 }
-                        albumName={ el.collectionName }
-                        artistName={ el.artistName }
-                        albumId={ el.collectionId }
-                      />
-                    </div>
-                  ))}
+                  <p
+                    className="
+                  text-2xl text-center text-r-cream
+                  mb-3"
+                  >
+                    {`Resultado de álbuns de: ${input}`}
+
+                  </p>
+                  <div className="flex flex-wrap justify-around gap-1">
+                    {album.map((el) => (
+                      <div key={ el.collectionId }>
+                        <AlbumCard
+                          albumImage={ el.artworkUrl100 }
+                          albumName={ el.collectionName }
+                          artistName={ el.artistName }
+                          albumId={ el.collectionId }
+                        />
+                      </div>
+                    ))}
+                  </div>
                 </>
               )
-                : <p>Nenhum álbum foi encontrado</p>
+                : (
+                  <p
+                    className="
+                text-center text-r-cream text-2xl"
+                  >
+                    Nenhum álbum foi encontrado
+
+                  </p>
+                )
             }
           </div>
         </div>
