@@ -28,6 +28,14 @@ export default class Profile extends Component {
     });
   }
 
+  userImage = () => {
+    const { info } = this.state;
+
+    return info.image
+      ? <img className="rounded-full" src={ info.image } alt="foto" />
+      : <FaUser className="text-r-dark text-4xl" />;
+  }
+
   render() {
     const { loading, info } = this.state;
     const { history } = this.props;
@@ -54,9 +62,7 @@ export default class Profile extends Component {
                 shadow shadow-r-cream
                 w-16 h-16"
                   >
-                    { info.image
-                      ? <img className="rounded-full" src={ info.image } alt="foto" />
-                      : <FaUser className="text-r-dark text-4xl" />}
+                    {this.userImage()}
                   </span>
                   <button
                     className="
