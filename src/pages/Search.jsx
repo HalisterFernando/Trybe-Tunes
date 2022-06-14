@@ -31,17 +31,37 @@ export default class Search extends Component {
     });
   };
 
+  isBtnDisable = () => {
+    const { isDisable } = this.state;
+
+    return isDisable ? 'btn-disable' : 'btn-able';
+  }
+
   render() {
     const { search, isDisable, loading, album, input } = this.state;
 
     return (
       <>
         <Header />
-        <div className="bg-r-dark max-h-full flex flex-col items-center" data-testid="page-search">
+        <div
+          className="
+        bg-r-dark
+        max-h-full
+        flex flex-col items-center"
+          data-testid="page-search"
+        >
           {loading
             ? <Loading /> : (
               <form className="pt-10 w-80" action="">
-                <label className="flex flex-col px-10 gap-2 md:flex-row md:justify-center" htmlFor="search">
+                <label
+                  className="
+                flex flex-col
+                md:flex-row
+                md:justify-center
+                px-10
+                gap-2"
+                  htmlFor="search"
+                >
                   <input
                     name="search"
                     id="search"
@@ -51,7 +71,7 @@ export default class Search extends Component {
                     type="text"
                   />
                   <button
-                    className={ isDisable ? 'btn-disable' : 'btn-able' }
+                    className={ this.isBtnDisable() }
                     value={ search }
                     disabled={ isDisable }
                     onClick={ this.albumSearch }
