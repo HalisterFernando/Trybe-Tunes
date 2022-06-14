@@ -52,6 +52,12 @@ export default class ProfileEdit extends Component {
       : <FaUser className="text-r-dark text-4xl" />;
   }
 
+  isBtnDisable = () => {
+    const { isDisable } = this.state;
+
+    return isDisable ? 'btn-disable md:w-1/2' : 'btn-able md:w-1/2';
+  }
+
   validate = () => {
     const { name, email, description } = this.state;
 
@@ -144,8 +150,7 @@ export default class ProfileEdit extends Component {
                   </div>
                   <div className="flex justify-center">
                     <button
-                      className={ isDisable
-                        ? 'btn-disable md:w-1/2' : 'btn-able md:w-1/2' }
+                      className={ this.isBtnDisable() }
                       disabled={ isDisable }
                       type="button"
                       onClick={ () => {
