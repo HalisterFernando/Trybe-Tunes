@@ -81,6 +81,7 @@ export default class Login extends Component {
                     value={ name }
                     name="name"
                     type="text"
+                    placeholder="Insira seu nome"
                     data-testid="login-name-input"
                   />
                 </label>

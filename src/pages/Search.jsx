@@ -68,6 +68,7 @@ export default class Search extends Component {
                     className="p-2 bg-slate-100 rounded-md border border-r-dark"
                     onChange={ this.handleSearch }
                     data-testid="search-artist-input"
+                    placeholder="Artista ou banda"
                     type="text"
                   />
                   <button
