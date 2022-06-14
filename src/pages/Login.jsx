@@ -35,6 +35,12 @@ export default class Login extends Component {
     });
   };
 
+  isBtnDisable = () => {
+    const { isDisable } = this.state;
+
+    return isDisable ? 'btn-disable' : 'btn-able';
+  }
+
   render() {
     const { name, isDisable, redirect, loading } = this.state;
 
@@ -79,7 +85,7 @@ export default class Login extends Component {
                   />
                 </label>
                 <button
-                  className={ isDisable ? 'btn-disable' : 'btn-able' }
+                  className={ this.isBtnDisable() }
                   disabled={ isDisable }
                   data-testid="login-submit-button"
                   type="button"
