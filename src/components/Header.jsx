@@ -85,6 +85,15 @@ export default class Header extends Component {
                 Perfil
               </Link>
             </div>
+            <div className="flex justify-center">
+              <a
+                className="text-r-dark mt-1 hover:underline hover:font-semibold "
+                href="https://www.flaticon.com/br/icones-gratis/vinil"
+                title="vinil ícones"
+              >
+                Vinil ícones criados por Slidicon - Flaticon
+              </a>
+            </div>
           </nav>
         </header>
       )

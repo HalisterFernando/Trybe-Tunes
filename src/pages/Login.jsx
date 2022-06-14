@@ -73,10 +73,10 @@ export default class Login extends Component {
               </h1>
               <img className="w-20" src={ Disco } alt="disco" />
               <form className="flex flex-col items-center" action="">
-                <label className="mb-3 flex items-center gap-2" htmlFor="name">
+                <label className="mb-3 flex items-center gap-2 w-full" htmlFor="name">
                   <input
                     id="name"
-                    className="p-2 bg-slate-100 rounded-md border border-r-dark"
+                    className="p-2 bg-slate-100 rounded-md border border-r-dark w-full"
                     onChange={ this.handleChange }
                     value={ name }
                     name="name"
@@ -94,6 +94,16 @@ export default class Login extends Component {
                   Entrar
 
                 </button>
+                <div className="mt-10">
+
+                  <a
+                    className="text-r-dark mt-1 hover:underline hover:font-semibold"
+                    href="https://www.flaticon.com/br/icones-gratis/vinil"
+                    title="vinil ícones"
+                  >
+                    Vinil ícones criados por Slidicon - Flaticon
+                  </a>
+                </div>
               </form>
             </div>
           </div>

@@ -16,6 +16,7 @@ Esta é uma aplicação capaz de reproduzir músicas das mais variadas bandas e 
 * JavaScript
 * HTML
 * CSS
+* React-icons
 
 ## Instalando Dependências e Iniciando a Aplicação
 
