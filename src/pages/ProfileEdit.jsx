@@ -45,6 +45,13 @@ export default class ProfileEdit extends Component {
     }, this.validate);
   };
 
+  profileImage = () => {
+    const { image } = this.state;
+    return image
+      ? <img className="rounded-full" src={ image } alt="foto" />
+      : <FaUser className="text-r-dark text-4xl" />;
+  }
+
   validate = () => {
     const { name, email, description } = this.state;
 
@@ -86,9 +93,7 @@ export default class ProfileEdit extends Component {
                     shadow shadow-r-cream
                     w-16 h-16"
                   >
-                    { image
-                      ? <img className="rounded-full" src={ image } alt="foto" />
-                      : <FaUser className="text-r-dark text-4xl" />}
+                    {this.profileImage()}
                   </span>
                   <div>
                     <p
