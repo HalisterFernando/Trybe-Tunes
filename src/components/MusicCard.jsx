@@ -40,6 +40,14 @@ export default class MusicCard extends Component {
       favoriteSongs();
     };
 
+    isSongFavorite = () => {
+      const { checked } = this.state;
+
+      return checked
+        ? <FaStar className="text-xl text-r-cream" />
+        : <FaRegStar className="text-xl text-r-cream" />;
+    }
+
     render() {
       const { trackName, previewUrl, trackId, musicObj } = this.props;
       const { loading, checked } = this.state;
@@ -73,9 +81,7 @@ export default class MusicCard extends Component {
                     O seu navegador não suporta o elemento
                     <code>audio</code>
                   </audio>
-                  { checked
-                    ? <FaStar className="text-xl text-r-cream" />
-                    : <FaRegStar className="text-xl text-r-cream" />}
+                  {this.isSongFavorite()}
                   <input
                     className="absolute hidden"
                     checked={ checked }
